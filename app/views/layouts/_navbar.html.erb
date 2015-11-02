@@ -1,0 +1,22 @@
+<br>
+<br>
+<br>
+<div class="navbar navbar-default navbar-fixed-top">
+	<h2 class="col-sm-4"> <%= link_to image_tag("http://www.procon.org/files/1-social-networking-images/twitter-blackout.jpg", class: "notwitter-logo"), root_path %><strong><%= link_to "Notwitter", root_path%></strong> </h2>
+	<div class="navbar-right col-md-3">
+		<% if @user %>
+				<p class="pull-right text-center">
+					Logged in as 
+					<strong>
+						<%= link_to @user.screen_name, "/profile" %>
+					</strong>
+						<%= image_tag @user.image_url, class: "profile-img" %>
+					<br><%= link_to "Logout", logout_path %>
+				</p>
+		<% else %>
+			<p class="text-center">
+				<%= link_to "Log In With Twitter!", login_path %>
+			</p>
+		<% end %>
+	</div>
+</div>

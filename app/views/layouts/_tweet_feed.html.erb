@@ -1,0 +1,27 @@
+<% @tweets.each do |tweet| %>
+	<div class="well">
+		<%= image_tag tweet.user.profile_image_url %>
+		<h5>
+			<strong>
+				<%= tweet.user.screen_name %>
+			</strong>
+		</h5>
+		<br>
+		<p>
+			<%= tweet.full_text %>
+		</p>
+		<% if tweet.favorited? %>
+			<%= button_to tweet_path(tweet.id, "unfavorite"), method: :patch, class: "btn btn-default" do %>
+    		<i class="glyphicon glyphicon-star"></i>
+			<% end %>
+		<% else %>
+			<%= button_to tweet_path(tweet.id, "favorite"), method: :patch, class: "btn btn-default" do %>
+    		<i class="glyphicon glyphicon-star-empty"></i>
+			<% end %>
+		<% end %>
+		<%= button_to tweet_path(tweet.id, "retweet"), method: :patch, class: "btn btn-success" do %>
+			<i class="glyphicon glyphicon-retweet"></i>
+		<% end %>
+		<br>
+	</div>
+<% end %>

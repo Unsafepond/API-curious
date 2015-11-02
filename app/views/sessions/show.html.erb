@@ -1,0 +1,29 @@
+<%= render 'layouts/navbar'  %>
+
+<div class="col-sm-12">
+	<h1>
+		<%= image_tag @user.image_url %> 
+		<%= @user.screen_name %>
+	</h1>
+</div>
+
+<div class="well">
+	<table class="table">
+		<tr>
+			<td>
+			 Followers:
+			</td>
+			<td>
+			 <%= @user.followers_count %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Following:
+			</td>
+			<td>
+				<%= @user.friends_count %>
+			</td>
+		</tr>
+	</table>
+</div>
