@@ -35,4 +35,8 @@ class TwitterObject
   def retweet(tweet)
   	@client.retweet(tweet)
   end
+
+  def reply_to_tweet(tweet, reply)
+  	@client.update("@#{tweet.user.username} #{reply[:text]}", in_reply_to_status_id: tweet.id)
+  end
 end

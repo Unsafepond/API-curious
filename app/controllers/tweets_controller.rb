@@ -27,4 +27,12 @@ class TweetsController < ApplicationController
 			redirect_to root_path
 		end
 	end
+
+	def reply
+		# byebug
+		twitter = TwitterObject.new(current_user)
+		tweet = twitter.find_tweet_by_id(params[:id])
+		twitter.reply_to_tweet(tweet, params[:tweet])
+		redirect_to root_path
+	end
 end

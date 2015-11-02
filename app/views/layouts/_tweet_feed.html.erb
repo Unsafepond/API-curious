@@ -10,18 +10,24 @@
 		<p>
 			<%= tweet.full_text %>
 		</p>
-		<% if tweet.favorited? %>
-			<%= button_to tweet_path(tweet.id, "unfavorite"), method: :patch, class: "btn btn-default" do %>
-    		<i class="glyphicon glyphicon-star"></i>
+		<div id="tweet-buttons col-sm-12">
+			<% if tweet.favorited? %>
+				<%= button_to tweet_path(tweet.id, "unfavorite"), method: :patch, class: "btn btn-default" do %>
+	    		<i class="glyphicon glyphicon-star"></i>
+				<% end %>
+			<% else %>
+				<%= button_to tweet_path(tweet.id, "favorite"), method: :patch, class: "btn btn-default" do %>
+	    		<i class="glyphicon glyphicon-star-empty"></i>
+				<% end %>
 			<% end %>
-		<% else %>
-			<%= button_to tweet_path(tweet.id, "favorite"), method: :patch, class: "btn btn-default" do %>
-    		<i class="glyphicon glyphicon-star-empty"></i>
+			<%= button_to tweet_path(tweet.id, "retweet"), method: :patch, class: "btn btn-success" do %>
+				<i class="glyphicon glyphicon-retweet"></i>
 			<% end %>
-		<% end %>
-		<%= button_to tweet_path(tweet.id, "retweet"), method: :patch, class: "btn btn-success" do %>
-			<i class="glyphicon glyphicon-retweet"></i>
-		<% end %>
+			<%= form_for :tweet, url: tweet_path(tweet.id) do |f| %>
+				<%= f.text_area :text %>
+				<%= f.submit "Reply",  class: "btn btn-info" %>
+			<% end %>
+		</div>
 		<br>
 	</div>
 <% end %>

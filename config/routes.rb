@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: :logout
   get '/profile', to: 'sessions#show', as: :profile
   resources :tweets, only: [:new, :create, :update]
+  post '/tweets/:id', to: 'tweets#reply'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
